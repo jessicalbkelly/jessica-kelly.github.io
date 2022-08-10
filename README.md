@@ -13,3 +13,5 @@
 5) Reopen terminal
 6) in terminal, type => sudo apt-get install subversion
 7) in terminal, type => npm install -g opspark
+
+adoafp
