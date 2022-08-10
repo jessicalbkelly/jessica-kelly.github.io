@@ -65,13 +65,14 @@ console.log(remove(animals, "Jerome"))
 function add(animals, animal) {
     var animalExists = false; //boolean flag variable
     for (var i = 0; i < animals.length; i++) {
-        //determine if current item's name matches input animal name; if true reassign animalExists to true
-        
-        
+        if (animals[i].name === animal.name) {
+            animalExists = true;
         }
-        else if (animal.name.length > 0) && (animal.species > 0) && (animalExists = false) {
-    animals.push(animal);
-}
+    }
+    if ((animalExists === false) && (animal.name.length > 0) && (animal.species.length > 0)) {
+        animals.push(animal);
+        }
+    }
 
 /**
  * You did it! You're all done with Matchy!
