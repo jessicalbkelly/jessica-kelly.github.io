@@ -21,12 +21,22 @@
  *  b. you'll need a loop, which one is best?
  *  c. you'll wanna make use of the push() method of Array.
  */
-function range(start, end) {
+ function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
-    
-    
-    
+    var helper = start - end;
+    var arr = [start];
+    if (helper < 0) {
+        for (var i = 1; i <= Math.abs(helper); i++) {
+            arr.push(i+start);}
+    } else if (helper > 0) {
+        for (i = 1; i <= Math.abs(helper); i++) {
+            arr.push(start-i);}
+    } else {
+        return arr;
+    }
+    return arr;
+
+
     // YOUR CODE GOES ABOVE HERE //
 }
 

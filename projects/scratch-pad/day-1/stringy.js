@@ -12,20 +12,27 @@
  * TIP: In JavaScript, how can we decipher the length of a String?
  * work?
  */
+
+//i: string, o: number of characters in that string, c: nothing, e: nothing
+
 function length(string) {
     // YOUR CODE BELOW HERE //
-    
+    //use the .length property to return the length of a string
+    return string.length;
 
 
     // YOUR CODE ABOVE HERE //
 }
 
+
 /**
  * Given an input String, return a new String forced to lowercase.
  */
+//i: string, o: string all lower case, c: none, e: none
 function toLowerCase(string) {
     // YOUR CODE BELOW HERE //
-
+    //use the .toLowerCase() property to convert everything to lowercase
+return string.toLowerCase();
 
 
     // YOUR CODE ABOVE HERE //
@@ -34,9 +41,11 @@ function toLowerCase(string) {
 /**
  * Given an input String, return a new String forced to uppercase.
  */
+//i: string, o: string all uppercase, c: none, e: none
 function toUpperCase(string) {
     // YOUR CODE BELOW HERE //
-
+ //use the .toUpperCase() property to convert everything to uppercase
+ return string.toUpperCase();
 
 
     // YOUR CODE ABOVE HERE //
@@ -55,10 +64,18 @@ function toUpperCase(string) {
  *
  *      See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#Using_global_and_ignore_with_replace()
  */
+
+//i: string, o: string all lowercase, no punctuation except for dashes in between words, c: none, e: none
 function toDashCase(string) {
     // YOUR CODE BELOW HERE //
+    //add dashes between words
+    string =  string.replaceAll(" ", "-");
 
+    //change everything to lowercase
+    string = string.toLowerCase();
 
+ 
+    return string;
 
     // YOUR CODE ABOVE HERE //
 }
@@ -75,11 +92,20 @@ function toDashCase(string) {
  * TIP: How can you use Array access to your advantage here? How can you
  *      ensure uppercase and lowercase can be compared equally?
  */
+
+//i: string and a character; o: "true" if the string begins with that character and false otherwise; c: none; e: none
+
 function beginsWith(string, char) {
     // YOUR CODE BELOW HERE //
 
-    
-
+    if (string[0] === char) {
+        return true;
+         } else if (string[0].toLowerCase() === char) {
+            return true;
+        } else {
+            return false;
+        
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -97,7 +123,13 @@ function beginsWith(string, char) {
  */
 function endsWith(string, char) {
     // YOUR CODE BELOW HERE //
-
+    if (string[string.length-1] === char) {
+        return true;
+         } else if (string[string.length-1].toUpperCase() === char) {
+            return true;
+        } else {
+            return false;
+    }
 
 
     // YOUR CODE ABOVE HERE //
@@ -110,7 +142,7 @@ function endsWith(string, char) {
  */
 function concat(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
-
+return stringOne + stringTwo;
 
 
     // YOUR CODE ABOVE HERE //
@@ -129,6 +161,8 @@ function concat(stringOne, stringTwo) {
 function join(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
     var args = Array.from(arguments);
+    args = args.join("");
+      return args;
 
 
     // YOUR CODE ABOVE HERE //
@@ -145,6 +179,11 @@ function join(stringOne, stringTwo) {
  */
 function longest(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+if (stringOne.length > stringTwo.length) {
+    return stringOne;
+} else {
+  return stringTwo;
+}
 
 
 
@@ -160,8 +199,17 @@ function longest(stringOne, stringTwo) {
  */
 function sortAscending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    var compare = stringOne.localeCompare(stringTwo);
 
-
+    if (compare < 0) {  
+        return 1;
+    }
+    else if (compare > 0) {
+        return -1;
+    }
+    else {  
+        return 0;
+    } 
 
     // YOUR CODE ABOVE HERE //
 }
@@ -176,6 +224,17 @@ function sortAscending(stringOne, stringTwo) {
  */
 function sortDescending(stringOne, stringTwo) {
     // YOUR CODE BELOW HERE //
+    var compare = stringOne.localeCompare(stringTwo);
+
+    if (compare > 0) {  
+        return 1;
+    }
+    else if (compare < 0) {
+        return -1;
+    }
+    else {  
+        return 0;
+    } 
 
 
 
