@@ -161,8 +161,6 @@ var genderCount = function(array) {
 return object;
 };
 
-
-
 // _.reduce = function(array, func, seed) {
 //     let result;
 //              if (seed !== undefined) {
