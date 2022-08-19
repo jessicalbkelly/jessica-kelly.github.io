@@ -15,3 +15,14 @@
 7) in terminal, type => npm install -g opspark
 
 adoafp
+
+## to access lodown on gitpod
+1) Go to top left 3 horizontal lines
+2) Click File > Open File
+3) In input field, delete everything but /workspace/
+4) Select lodown from the list of files below
+5) Select index.js from the list of files shown for lodown
+
+cd ..
+cd lowdown
+cd jessica-kelly ...
