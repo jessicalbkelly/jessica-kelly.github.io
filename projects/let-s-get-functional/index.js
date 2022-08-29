@@ -46,25 +46,44 @@ return females.length;
 };
 
 var oldestCustomer = function(array) {
-// ### 3: `oldestCustomer`
-//  - **Objective**: Find the oldest customer's name
-//  - **Input**: `Array`
-//  - **Output**: `String`
-var oldest = _.filter(array, function(customer) {
-    return Math.max(null, customer.age);
+var oldest = _.reduce(array, function(accumulator, current) { 
+// accumulator = {name: X, age X}
+//current = ''
+//need to figure out if current > accumulator
+if (current.age > accumulator.age) {
+    return current;
+}
+return accumulator;
 });
 return oldest.name;
 };
 
+//invoke oldestCustomer
+//invoke reduce
+//result = {name: Bob ...}
+//for loop starting at 1 index of array
+//1
+//result = fun((...), ())
 
-var youngestCustomer = function() {
+// ### 3: `oldestCustomer`
+//  - **Objective**: Find the oldest customer's name
+//  - **Input**: `Array`
+//  - **Output**: `String`
+
+var youngestCustomer = function(array) {
 // ### 4: `youngestCustomer`
 //  - **Objective**: Find the youngest customer's name
 //  - **Input**: `Array`
 //  - **Output**: `String`
 //  - **Constraints**:
-    
-}
+var youngest = _.reduce(array, function(previous, current) { 
+    if (current.age < previous.age) {
+        return current;
+    }
+    return previous;
+    });
+    return youngest.name;
+    };
 
 var averageBalance = function(array) {
 // ### 5: `averageBalance`
@@ -72,15 +91,21 @@ var averageBalance = function(array) {
 //  - **Input**: `Array`
 //  - **Output**: `Number`
 //  - **Constraints**:
-var balance = function(array) {
-    var bal = _.filter(array, function(customer) {
-       return customer.balance >= 0;
-        }); 
-        const sum = bal.reduce((partialSum, a) => partialSum + a, 0);
-        var avg = sum/bal.length;
-}
-   return avg;
-   };
+var balances = _.map(array, function(customer){
+    var stringNum = customer.balance.replace(/[$,]/g,"")
+     stringNum = parseFloat(stringNum);
+     console.log(stringNum);
+     return stringNum;
+     });
+         //iterate through array of balances to get a sum 
+         //divide that sum by the length
+         var counter = 0;
+         for (var i = 0; i < balances.length; i++) {
+                 counter += balances[i];
+             }
+             var average = counter / balances.length;
+             return average;
+ };
 
 
 var firstLetterCount = function(array, letter) {
@@ -99,13 +124,10 @@ return first.length;
 var friendFirstLetterCount = function(array, customer, letter) {
     for (var i = 0; i < array.length; i++) {
         if (array[i].name === customer) {
-            var friendFirst = _.filter(array, function(customer) {
-                for (var key in friends){
-                return array[i].friends.name[0].toLowerCase() === letter.toLowerCase();
-                }});
-                
-                }           
-                
+            var friendFirst = _.filter(array[i].friends, function(friendName) {
+                return friendName.name[0].toLowerCase() === letter.toLowerCase();
+                });
+                }                 
     }
     return friendFirst.length;
 };
@@ -117,13 +139,21 @@ var friendFirstLetterCount = function(array, customer, letter) {
 //  - **Constraints**:
 
 
-var friendsCount = function() {
+var friendsCount = function(array, name) {
 // ### 8: `friendsCount`
 //  - **Objective**: Find the customers' names that have a given customer's name in their friends list
 //  - **Input**: `Array`, `Name`
 //  - **Output**: `Array`
 //  - **Constraints**:
-    
+    var customersNames = [];
+    for (var i = 0; i < array.length; i++) {
+        for (var j = 0; j < array[i].friends.length; j++) {
+            if (array[i].friends[j].name === name) {
+                customersNames.push(array[i].name);
+            }
+        }
+    }
+    return customersNames;
 }
 
 var topThreeTags = function(array) {
@@ -132,10 +162,40 @@ var topThreeTags = function(array) {
 //  - **Input**: `Array`
 //  - **Output**: `Array`
 //  - **Constraints**:
+var pushArray = [];
 
+for (var i = 0; i < array.length; i++) {
+    for (var j = 0; j < array[i].tags.length; j++)
+    pushArray.push(array[i].tags[j]);
 }
 
-var genderCount = function(array) {
+const count = {};
+
+for (const element of pushArray) {
+  if (count[element]) {
+    count[element] += 1;
+  } else {
+    count[element] = 1;
+  }
+}
+var entries = Object.entries(count);  //returns array of arrays
+
+//now sort this array by the number at each item's 1 index
+
+entries.sort(function(a, b){ //a is current value, b is next value in array
+    return b[1] - a[1];
+})
+console.log(entries);
+
+var newVar = [];
+newVar.push(entries[0][0]);
+newVar.push(entries[1][0]);
+newVar.push(entries[2][0]);
+return newVar;
+}
+
+
+
 // ### 10: `genderCount`
 //  - **Objective**: Create a summary of genders, the output should be:
 // ```javascript
@@ -148,35 +208,20 @@ var genderCount = function(array) {
 //  - **Input**: `Array`
 //  - **Output**: `Object`
 //  - **Constraints**: Use `reduce`
- 
- var myObj = _.filter(array, seed, function(customer) {
-    let firstVar = customer.gender === "male";
-    let secondVar = customer.gender === "female";
-    let thirdVar = customer.gender === "non-binary";
-    let object = {};
-    object.firstVar = "male";
-    object.secondVar = "female";
-    object.thirdVar = "non-binary";
-});
-return object;
-};
+var genderCount = function(array) {
+var myObj = _.reduce(array, function(accumulator, current) {
 
-// _.reduce = function(array, func, seed) {
-//     let result;
-//              if (seed !== undefined) {
-//                 result = seed;
-//                 for (let i = 0; i < array.length; i++) {
-//                     result = func(result, array[i], i, array);
-//                 }
-//             } else {
-//                 result = array[0];
-//                 for (let i = 1; i < array.length; i++) {
-//                 result = func(result, array[i], i, array);
-//     }
-// }
-             
-// return result;
-// }
+    if (accumulator[current.gender]) {
+        accumulator[current.gender] = accumulator[current.gender] + 1;
+        return accumulator;
+    } else {
+        accumulator[current.gender] = 1;
+        return accumulator;
+    } 
+}, {});
+return myObj;
+}
+
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
