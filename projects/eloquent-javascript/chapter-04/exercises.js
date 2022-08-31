@@ -3,22 +3,23 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 function range(start, end, step) {
-  var helper = [];
-    if (step === undefined) {
+  let helper = [];
+  if (start === end) {
+    helper = [];
+  }
+    else if (step === undefined) {
       for (var i = start; i <= end; i++) {
       helper.push(i);
       }}
-  else if (step > 0) {
-      for (var j = start; j <= end; j++){
-      helper.push(j)
-      j + step;
-  }} else if (step < 0){
-    for (var k = start; k <= end; k++) {
-      
+  else if (step >= 0) {
+      for (var j = start; j <= end; j += step){
+      helper.push(j);
     }
   };
 return helper;
 };
+
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
@@ -27,8 +28,11 @@ return helper;
 function sum(array) {
   var myVar = 0;
 for (var i = 0; i <= array.length - 1; i++) {
-myVar += i
-}};
+myVar += array[i]
+  
+  
+}
+return myVar};
 
 ////////////////////////////////////////////////////////////////////////////////
 // reverseArray ////////////////////////////////////////////////////////////////
@@ -48,9 +52,16 @@ function reverseArray(array, revArray = []) {
 // reverseArrayInPlace /////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function reverseArrayInPlace() {
-
-}
+function reverseArrayInPlace(array) {
+  let helper = [];
+    for (var i = array.length - 1; i >= 0; i--){
+        helper.push(array[i]);
+    };
+    for (var j = 0; j <= array.length - 1; j++){
+    array[j] = helper[j]
+    }
+  return array;
+  };
 
 ////////////////////////////////////////////////////////////////////////////////
 // arrayToList /////////////////////////////////////////////////////////////////
@@ -80,25 +91,61 @@ return rest;
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() { //demonstrate
+function listToArray(list, output=[]) { 
+  //base
+  if(list.rest === null){
+output.push(list.value);
+return output;
+  }
 
+  //recursion
+  //access value property and push into output array
+  output.push(list.value);
+return listToArray(list.rest, output);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
 
-}
+     function prepend(value, list) {
+      let newList = {};
+      newList.value = value;
+      newList.rest = list;
+      return newList;
+      
+     };
+
+
+     ///value that was passed in/,
+///assign rest property list that was passed in as object
+// { value: /whatever was passed in to function/, 
+//rest: /assign the object that was passed in/ }
 
 ////////////////////////////////////////////////////////////////////////////////
 // nth /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function nth() {
+function nth(list, n) {
+if(n === 0){
+  return list.value;
+    } else if (n < 0) {
+      return undefined;
+    }
+    
+  
+    //recursion
+    return nth(list.rest, n - 1)
+};
+  
 
-}
+
+
+
+//nth, which takes a list and a number and returns the element 
+//at the given position in the list (with zero referring to the first element) 
+//or undefined when there is no such element.
 
 ////////////////////////////////////////////////////////////////////////////////
 // deepEqual ///////////////////////////////////////////////////////////////////
