@@ -30,3 +30,7 @@ console.log(myMessage + myMessage2) // prints "hello world" to the console
 // Illustration of Key Point 2 //
 var myString = "Hello";
 console.log(myString.concat(" World"));// prints "Hello World" to the console
+
+var myString2 = "Jessica";
+console.log(myString2.split("")); //prints [ 'J', 'e', 's', 's', 'i', 'c', 'a'] to the console
+console.log(myString2.length) //prints 7 to the console

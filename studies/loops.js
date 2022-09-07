@@ -17,6 +17,11 @@
  *              for (initialization; condition; finalExpression) {
  *              // code
  *              }
+ *      for loops are broken down into 3 statements:
+ *          - start: initializes counting variable
+ *          - stop: defines condition that when false ends loop
+ *          - update: defines how to increment/decrement counting variable
+ * 
  * 3. Key Point 3: For-in loop
  *      Use: For-in loops are used to loop over objects
  *      Syntax: 

@@ -66,4 +66,8 @@ console.log(y); // prints Infinity to the console
 var myNewObject = {Cats: 3; Dogs: true; Behaviors: "Good"}; //objects are complex because they can contain various data types
 var x = 4; // simple data types, like numbers, only contain themselves!
 
+// Illustration of Key Point 6: Copy by reference vs. copy by value //
+let message = "Hello!"; // message's value references the value "Hello!"
+let phrase = message; // phrase's value is a copy of message, which, when logged, would read "Hello!"
+
 //sources: https://javascript.info/types; https://www.w3schools.com/jsref/jsref_infinity.asp; https://www.javascripttutorial.net/javascript-primitive-vs-reference-values/

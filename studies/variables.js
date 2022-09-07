@@ -12,13 +12,14 @@
  *      You cannot re-declare a variable declared with let or const.  You can re-declare a variable declared with var like this: myVariable = 3;
  * 2. Key Point 2: var, let, const
  *      var:
- *          Always declare JavaScript variables with var,let, orconst.
+ *          Always declare JavaScript variables with var,let, or const.
  *          The var keyword is used in all JavaScript code from 1995 to 2015.
  *          The let and const keywords were added to JavaScript in 2015.
  *          If you want your code to run in older browser, you must use var.
  *      let and const:
  *          As a general rule, declare variables with const.
  *          If you think the value of the variable can change, use let.
+ *          let and const are block scoped whereas var is global/function scoped. 
  * 3. Key Point 3: Hoisting
  *      Hoisting is JavaScript's default behavior of moving declarations to the top of the current scope (to the top of the current script or the current function).
  *      In JavaScript, a variable can be declared after it has been used.
@@ -40,6 +41,16 @@ const price1 = 5;
 const price2 = 6;
 let total = price1 + price2;
 console.log(total); // The two variables price1 and price2 are declared with the const keyword. These are constant values and cannot be changed. The variable total is declared with the let keyword, which is a value that can be changed.
+
+let greeting = "say Hi";
+if (true) {
+    let greeting = "say Hello instead";
+    console.log(greeting); // "say Hello instead"
+}
+console.log(greeting); // "say Hi" -- with let, even if the same variable is defined in different scopes, there will be no error.
+
+const greeting = "say Hi";
+const greeting = "say Hello instead";// with this, there will be an error because const can't be redefined
 
 // Illustration of Key Point 3: Hoisting //
 // Explanation

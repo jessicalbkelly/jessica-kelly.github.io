@@ -64,23 +64,41 @@
 
 // Illustration of Key Point 1: Assignment Operators //
 A -= B // returns the value of A as A - B
+A += B // returns the value of A as A + B
 A *= B // returns the value of A as A * B
 A %= B // returns the value of A as the remainder when A is divided by B
+A **= B // returns the value of A as A to the Bth power
 
 // Illustration of Key Point 2: Arithmetic Operators //  
 10 + 5 // returns 15
+10 - 5 // returns 5
+10 * 5 // returns 50
+10 / 5 // returns 2
 5 ** 2 // returns 25, or the same as 5*5
 16 % 4 // returns 0
 
 // Illustration of Key Point 3: Comparison Operators //
 5 > 2 // returns  true
 5 < 2 // returns false
+5 >= 2 // returns  true
+5 <= 2 // returns false
+5 === 2 // returns false
 5  !== 2 // returns true
 
 // Illustration of Key Point 4: Logical Operators //
 var a = 3;
 var b = -2;
 console.log(a > 0 || b > 0); // expected output: true, because a is greater than 0
+
+var a = 3;
+var b = -2;
+console.log(a > 0 && b > 0); // expected output: false, because only one of the conditions is true
+
+var a = 3;
+var b = -2;
+console.log(a !> 0 || b > 0); // expected output: true, because both conditions are true
+
+
 
 // Illustration of Key Point 5: Unary Operators //
 var variableExample = 1;
@@ -91,13 +109,21 @@ console.log(variableExample);    // returns 1
 // ternary operator to check the eligibility to vote
 let age = 15;
 let result = (age >= 18) ? "You are eligible to vote." : "You are not eligible to vote yet";
-console.log(result); 
-// output: You are not eligible to vote yet.
+console.log(result); // output: You are not eligible to vote yet.
+
+function getFee(isMember) {
+    return (isMember ? '$2.00' : '$10.00');
+  }
+  console.log(getFee(true)); // expected output: "$2.00"
 
 // Illustration of Key Point 7: Incrementing Operators //
 //Postfix:
 var x = 3;
 var y = x++; // now, y = 3 and x = 4
+
+var x = 3;
+var y = x--; // now, y = 3 and x = 2
+
 //Prefix:
 var a = 2;
 var b = ++a; // now, a = 3 and b = 3

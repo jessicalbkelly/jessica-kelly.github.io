@@ -31,11 +31,10 @@
  */
 
 // Illustration of Key Point 1: Definition //
-function multiply(x, y) {
+function multiply(x, y) { //x and y here are parameters
 	return x * y;
 };
-
-console.log(multiply(5, 2)); // logs 10 to the console
+console.log(multiply(5, 2)); // logs 10 to the console; 5 and 2 here are arguments
 
 // Illustration of Key Point 2: Two phases of using a function //
 function goodDog(name) { //declares the function
